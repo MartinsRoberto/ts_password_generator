@@ -1,12 +1,21 @@
 import { useState } from "react"
 
 function App() {
-  const [options, setOptions] = useState({
+  const [options, setOptions] = useState<{
+    hasNumbers: boolean,
+    hasUppercaseLetters: boolean,
+    hasLowercaseLetters: boolean,
+    hasSymbols: boolean
+  }>({
     hasNumbers: false,
     hasUppercaseLetters: false,
     hasLowercaseLetters: false,
     hasSymbols: false
   })
+
+  const [password, setPassword] = useState<string>("")
+
+  const [isCopied, setIsCopied] = useState<boolean>(false)
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name
@@ -17,11 +26,15 @@ function App() {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
+    if (!(options.hasNumbers || options.hasUppercaseLetters || options.hasLowercaseLetters || options.hasSymbols)) {
+      return
+    }
+    
     let lengthPass = 0
 
     let password = ""
 
-    while (lengthPass != 8) {
+    while (lengthPass !== 8) {
       let random = Math.floor(Math.random() * 4)
 
       if (random == 0 && options.hasNumbers) {
@@ -42,7 +55,16 @@ function App() {
       }
     }
 
-    console.log(password)
+    setPassword(password)
+  }
+
+  const handleCopyClick = () => {
+    navigator.clipboard.writeText(password)
+    setIsCopied(true)
+
+    setTimeout(() => {
+      setIsCopied(false)
+    }, 3000)
   }
 
   const getNumber = () => {
@@ -85,9 +107,10 @@ function App() {
         <button className="submit"> Gerar senha</button>
       </form>
       <div className="generated">
-        <input type="text" />
-        <button>Copiar</button>
+        <input type="text" value={password} />
+        <button onClick={handleCopyClick}>Copiar</button>
       </div>
+      <div className={`${isCopied} msg-copy`}>Senha copiada com sucesso!</div>
     </div>
   )
 }

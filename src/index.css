@@ -31,7 +31,7 @@ li {
   list-style-type: none;
 }
 
-h1{
+h1 {
   text-align: center;
   margin: 1em 0;
 }
@@ -55,18 +55,18 @@ label span {
   margin-left: 20px;
 }
 
-input[type="text"]{
+input[type="text"] {
   width: 100%;
   text-align: center;
   font-size: 1.1em;
   font-weight: bold;
 }
 
-input[type="text"]:focus{
+input[type="text"]:focus {
   outline: none;
 }
 
-button{
+button {
   display: block;
   margin: auto;
   padding: 10px 20px;
@@ -78,16 +78,30 @@ button{
   font-size: 1em;
 }
 
-button:hover{
+button:hover {
   background-color: #065bdb;
 }
 
-.submit{
+.submit {
   margin-top: 3em;
 }
 
-.generated{
+.generated {
   display: flex;
   max-width: 500px;
   margin: auto;
+}
+
+.false {
+  display: none;
+}
+
+.true {
+  display: block;
+}
+
+.msg-copy {
+  margin-top: 0.5em;
+  text-align: center;
+  color: #0d6efd;
 }
