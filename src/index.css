@@ -55,6 +55,9 @@ label span {
   margin-left: 20px;
 }
 
+input{
+  border: none;
+}
 input[type="text"] {
   width: 100%;
   text-align: center;
@@ -89,6 +92,10 @@ button:hover {
   background-color: #065bdb;
 }
 
+button:disabled{
+  background-color: #cccccc;
+  border: none;
+}
 .submit {
   margin-top: 3em;
 }
@@ -118,9 +125,4 @@ input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
-}
-
-/* Firefox */
-input[type=number] {
-  -moz-appearance: textfield;
 }

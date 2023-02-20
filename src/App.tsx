@@ -25,6 +25,12 @@ function App() {
     setOptions(prevOptions => ({ ...prevOptions, [name]: isChecked }))
   }
 
+  const handlePasswordLength = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const length = Number(event.target.value)
+
+    setPasswordLength(length)
+  }
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault()
 
@@ -69,6 +75,8 @@ function App() {
   }
 
   const handleCopyClick = () => {
+    if (!password) return
+      
     navigator.clipboard.writeText(password)
     setIsCopied(true)
 
@@ -94,11 +102,6 @@ function App() {
     return symbols[Math.floor(Math.random() * symbols.length)]
   }
 
-  const handlePasswordLength = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const length = Number(event.target.value)
-    
-    setPasswordLength(length)
-  }
   return (
     <div className="App">
       <h1>Gerador de senha</h1>
@@ -127,7 +130,7 @@ function App() {
       </form>
       <div className="generated">
         <input type="text" value={password} />
-        <button onClick={handleCopyClick} disabled>Copiar</button>
+        <button onClick={handleCopyClick}>Copiar</button>
       </div>
       <div className={`${isCopied} msg-copy`}>Senha copiada com sucesso!</div>
     </div>
