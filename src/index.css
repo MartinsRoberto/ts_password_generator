@@ -66,6 +66,13 @@ input[type="text"]:focus {
   outline: none;
 }
 
+input[type="number"] {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  width: 50px;
+}
+
 button {
   display: block;
   margin: auto;
@@ -104,4 +111,16 @@ button:hover {
   margin-top: 0.5em;
   text-align: center;
   color: #0d6efd;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
 }
